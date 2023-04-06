@@ -1,0 +1,19 @@
+services:
+    node-spa:
+        build:
+            context: .
+            dockerfile: node-spa.Dockerfile
+        container_name: node-spa
+        image: node-spa
+        restart: always
+        ports:
+            - '8080:8080'
+        volumes:
+            - ./app/:/app/
+        # 設定log格式，限制大小數量 
+        logging: 
+            driver: "json-file" 
+            options: 
+                max-size: "1m" 
+                max-file: "3"
+  
